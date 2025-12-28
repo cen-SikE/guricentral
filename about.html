@@ -10,20 +10,25 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { font-family: "Pretendard", sans-serif; }
-        .logo-img:not([src]), .logo-img[src=""] { display: none; }
-        .logo-fallback { display: none; }
-        .logo-img:not([src]) + .logo-fallback, .logo-img[src=""] + .logo-fallback { display: flex; }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .logo-img { display: block; max-height: 2.5rem; width: auto; }
+        .logo-img[src=""], .logo-img:not([src]) { display: none; }
     </style>
 </head>
 <body class="bg-white text-slate-900">
-    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b h-20">
+    <header class="fixed w-full z-50 glass-nav border-b border-slate-100 h-20">
         <div class="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
-            <a href="index.html" class="flex items-center">
-                <div class="relative flex items-center">
-                    <img src="images/logo.png" alt="구리 센트럴병원" class="h-10 md:h-12 w-auto logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <a href="index.html" class="flex items-center group">
+                <div class="flex items-center">
+                    <img src="logo.png" alt="구리 센트럴병원" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="logo-fallback hidden items-center space-x-2">
-                        <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-5 h-5"></i></div>
-                        <span class="text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">구리 <span class="text-blue-600">센트럴병원</span></span>
+                        <div class="bg-blue-600 p-2 rounded-xl group-hover:bg-blue-700 transition-colors">
+                            <i data-lucide="plus" class="text-white w-5 h-5"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-black text-slate-900 leading-none">구리 <span class="text-blue-600">센트럴병원</span></span>
+                            <span class="text-[8px] text-slate-400 font-bold tracking-[0.2em] uppercase">Guri Central Hospital</span>
+                        </div>
                     </div>
                 </div>
             </a>
@@ -40,30 +45,12 @@
     <main class="pt-32 pb-24">
         <div class="container mx-auto px-4 md:px-8">
             <div class="max-w-4xl mx-auto">
-                <h1 class="text-5xl font-black mb-8 text-slate-900">당신의 건강을 지키는<br><span class="text-blue-600">가장 든든한 약속</span></h1>
-                <img src="images/about_main.jpg" alt="병원 상세 소개 메인 이미지" class="w-full h-[400px] object-cover rounded-[3rem] mb-12 shadow-xl">
+                <h1 class="text-5xl md:text-7xl font-black mb-12 text-slate-900 tracking-tight">당신의 건강을 지키는<br><span class="text-blue-600 underline decoration-blue-200 underline-offset-4">가장 든든한 약속</span></h1>
+                <img src="about_main.jpg" alt="병원 상세 소개" class="w-full h-[500px] object-cover rounded-[3.5rem] mb-16 shadow-2xl" onerror="this.src='https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1500'">
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-lg text-slate-600 leading-relaxed mb-16">
-                    <p>구리 센트럴병원은 지역사회 보건을 선도하며, 최고 수준의 의료진과 대학병원급 첨단 의료 장비를 갖추어 환자 중심의 의료 환경을 실현하고 있습니다.</p>
-                    <p>우리는 단순히 병을 고치는 것을 넘어, 환자분들이 다시 활기찬 일상으로 복귀하실 수 있도록 정성을 다하는 가족 같은 병원이 되겠습니다.</p>
-                </div>
-
-                <div class="bg-slate-50 p-12 rounded-[3rem]">
-                    <h3 class="text-2xl font-bold mb-8 flex items-center"><i data-lucide="check-circle" class="mr-3 text-blue-600"></i> 병원 운영 철학</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                        <div>
-                            <p class="font-bold text-blue-600 mb-2">01. 정직</p>
-                            <p class="text-sm">과잉 진료 없이 환자에게 꼭 필요한 진료만을 수행합니다.</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-blue-600 mb-2">02. 혁신</p>
-                            <p class="text-sm">끊임없는 연구와 최신 의료 기술 도입으로 치료율을 높입니다.</p>
-                        </div>
-                        <div>
-                            <p class="font-bold text-blue-600 mb-2">03. 배려</p>
-                            <p class="text-sm">환자의 불편함을 먼저 살피고 따뜻하게 소통합니다.</p>
-                        </div>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 text-xl text-slate-600 leading-relaxed font-medium">
+                    <p>구리 센트럴병원은 지역사회의 건강 파수꾼으로서, 대학병원급의 첨단 의료 기술과 사람 중심의 따뜻한 간호를 결합하여 최적의 치유 환경을 제공합니다.</p>
+                    <p>모든 환자가 내 가족이라는 마음으로, 정확한 진단과 정직한 치료를 통해 환자분들이 활기찬 일상을 되찾을 때까지 정성을 다하겠습니다.</p>
                 </div>
             </div>
         </div>

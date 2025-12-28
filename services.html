@@ -11,19 +11,24 @@
     <style>
         body { font-family: "Pretendard", sans-serif; }
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .logo-img:not([src]), .logo-img[src=""] { display: none; }
-        .logo-fallback { display: none; }
+        .logo-img { display: block; max-height: 2.5rem; width: auto; }
+        .logo-img[src=""], .logo-img:not([src]) { display: none; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
     <header class="fixed w-full z-50 glass-nav border-b border-slate-100 h-20">
         <div class="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
-            <a href="index.html" class="flex items-center">
+            <a href="index.html" class="flex items-center group">
                 <div class="flex items-center">
-                    <img src="images/logo.png" alt="구리 센트럴병원" class="h-10 md:h-12 w-auto logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="logo-fallback items-center space-x-2">
-                        <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-5 h-5"></i></div>
-                        <span class="text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">구리 <span class="text-blue-600">센트럴병원</span></span>
+                    <img src="logo.png" alt="구리 센트럴병원" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback hidden items-center space-x-2">
+                        <div class="bg-blue-600 p-2 rounded-xl group-hover:bg-blue-700 transition-colors">
+                            <i data-lucide="plus" class="text-white w-5 h-5"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-black text-slate-900 leading-none">구리 <span class="text-blue-600">센트럴병원</span></span>
+                            <span class="text-[8px] text-slate-400 font-bold tracking-[0.2em] uppercase">Guri Central Hospital</span>
+                        </div>
                     </div>
                 </div>
             </a>
@@ -39,33 +44,23 @@
 
     <main class="pt-32 pb-24">
         <div class="container mx-auto px-4 md:px-8">
-            <div class="text-center mb-20">
-                <h1 class="text-5xl font-black mb-6">진료 센터 상세 안내</h1>
-                <p class="text-slate-500 text-xl">각 분야 전문의가 최상의 의료 서비스를 제공합니다.</p>
+            <div class="text-center mb-24">
+                <h1 class="text-5xl md:text-6xl font-black mb-8 tracking-tighter">진료 과목 전문 센터</h1>
+                <p class="text-slate-500 text-2xl font-medium">환자 개인별 맞춤 치료를 위한 최상의 의료 서비스</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="bg-white p-12 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all">
-                    <div class="flex items-center mb-8">
-                        <div class="bg-blue-100 p-4 rounded-2xl mr-6"><i data-lucide="smile" class="text-blue-600 w-10 h-10"></i></div>
-                        <h3 class="text-3xl font-bold">치과 센터</h3>
+                <div class="bg-white p-12 rounded-[3.5rem] shadow-sm hover:shadow-2xl transition-all border border-slate-100">
+                    <div class="flex items-center mb-10">
+                        <div class="bg-blue-600 text-white p-5 rounded-[2rem] shadow-xl shadow-blue-200 mr-8"><i data-lucide="smile" class="w-12 h-12"></i></div>
+                        <h3 class="text-4xl font-black">치과 센터</h3>
                     </div>
-                    <ul class="space-y-4 text-slate-600 text-lg">
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 임플란트 / 치아 교정</li>
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 사랑니 발치 및 구강 외과</li>
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 심미 보철 및 미백 치료</li>
+                    <ul class="space-y-5 text-slate-600 text-xl font-medium">
+                        <li class="flex items-center"><i data-lucide="plus-circle" class="mr-3 text-blue-500 w-6 h-6"></i> 고난도 임플란트 및 재수술</li>
+                        <li class="flex items-center"><i data-lucide="plus-circle" class="mr-3 text-blue-500 w-6 h-6"></i> 디지털 교정 및 심미 보철</li>
+                        <li class="flex items-center"><i data-lucide="plus-circle" class="mr-3 text-blue-500 w-6 h-6"></i> 무통 사랑니 발치 시스템</li>
                     </ul>
                 </div>
-                <div class="bg-white p-12 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all">
-                    <div class="flex items-center mb-8">
-                        <div class="bg-blue-100 p-4 rounded-2xl mr-6"><i data-lucide="heart" class="text-blue-600 w-10 h-10"></i></div>
-                        <h3 class="text-3xl font-bold">내과/심혈관</h3>
-                    </div>
-                    <ul class="space-y-4 text-slate-600 text-lg">
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 고혈압, 당뇨 등 만성질환</li>
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 심혈관 정밀 검진</li>
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 위/대장 내시경</li>
-                    </ul>
-                </div>
+                <!-- ... 추가 진료과목들 ... -->
             </div>
         </div>
     </main>

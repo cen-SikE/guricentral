@@ -11,19 +11,28 @@
     <style>
         body { font-family: "Pretendard", sans-serif; scroll-behavior: smooth; }
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .logo-img:not([src]), .logo-img[src=""] { display: none; }
-        .logo-fallback { display: none; }
+        /* 로고 이미지 미출력 시 대응 */
+        .logo-img { display: block; max-height: 3rem; width: auto; }
+        .logo-img[src=""], .logo-img:not([src]) { display: none; }
     </style>
 </head>
 <body class="bg-white text-slate-900">
+    <!-- Header -->
     <header class="fixed w-full z-50 glass-nav border-b border-slate-100 h-20">
         <div class="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
-            <a href="index.html" class="flex items-center">
+            <a href="index.html" class="flex items-center group">
                 <div class="flex items-center">
-                    <img src="images/logo.png" alt="구리 센트럴병원" class="h-10 md:h-12 w-auto logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="logo-fallback items-center space-x-2">
-                        <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-5 h-5"></i></div>
-                        <span class="text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">구리 <span class="text-blue-600">센트럴병원</span></span>
+                    <!-- 1순위: 루트의 logo.png 시도 -->
+                    <img src="logo.png" alt="구리 센트럴병원" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <!-- 2순위: 이미지 실패 시 나타나는 세련된 로고 디자인 -->
+                    <div class="logo-fallback hidden items-center space-x-2">
+                        <div class="bg-blue-600 p-2 rounded-xl group-hover:bg-blue-700 transition-colors">
+                            <i data-lucide="plus" class="text-white w-6 h-6"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-xl font-black text-slate-900 leading-none">구리 <span class="text-blue-600">센트럴병원</span></span>
+                            <span class="text-[10px] text-slate-400 font-bold tracking-[0.2em] uppercase">Guri Central Hospital</span>
+                        </div>
                     </div>
                 </div>
             </a>
@@ -33,108 +42,114 @@
                 <a href="services.html" class="text-slate-600 hover:text-blue-600 transition-colors">진료안내</a>
                 <a href="doctors.html" class="text-slate-600 hover:text-blue-600 transition-colors">의료진</a>
                 <a href="contact.html" class="text-slate-600 hover:text-blue-600 transition-colors">오시는길</a>
-                <button class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 ml-4">진료 예약</button>
+                <button class="bg-blue-600 text-white px-7 py-3 rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 ml-4">진료 예약</button>
             </nav>
             <button class="lg:hidden p-2 text-slate-600" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
         </div>
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t p-4 absolute w-full shadow-xl text-center">
-            <nav class="flex flex-col space-y-4">
-                <a href="index.html" class="py-2 px-4 text-blue-600 font-bold">홈</a>
-                <a href="about.html" class="py-2 px-4">병원소개</a>
-                <a href="services.html" class="py-2 px-4">진료안내</a>
-                <a href="doctors.html" class="py-2 px-4">의료진</a>
-                <a href="contact.html" class="py-2 px-4">오시는길</a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t p-6 absolute w-full shadow-2xl text-center">
+            <nav class="flex flex-col space-y-5">
+                <a href="index.html" class="text-blue-600 font-bold text-lg">홈</a>
+                <a href="about.html" class="text-slate-600 text-lg">병원소개</a>
+                <a href="services.html" class="text-slate-600 text-lg">진료안내</a>
+                <a href="doctors.html" class="text-slate-600 text-lg">의료진</a>
+                <a href="contact.html" class="text-slate-600 text-lg">오시는길</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="relative h-screen flex items-center overflow-hidden">
             <div class="absolute inset-0 z-0">
-                <img src="images/main_hero.jpg" alt="메인 히어로 배경" class="w-full h-full object-cover brightness-[0.45]">
+                <!-- 고퀄리티 의료진 배경 이미지 (로컬 파일 없을 시 대비) -->
+                <img src="main_hero.jpg" alt="메인 배경" class="w-full h-full object-cover brightness-[0.4]" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=2000'">
             </div>
             <div class="container mx-auto px-4 md:px-8 relative z-10 text-white">
                 <div class="max-w-3xl">
-                    <p class="text-blue-400 font-bold mb-4 tracking-[0.2em] uppercase">Guri Central Hospital</p>
-                    <h1 class="text-5xl md:text-7xl font-bold leading-[1.1] mb-6">마음까지 치유하는<br>따뜻한 의료 서비스</h1>
-                    <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-xl leading-relaxed">구리 센트럴병원은 최고 수준의 의료진과 첨단 장비를 갖추고,<br>지역 주민의 건강한 삶을 위해 365일 정성을 다하고 있습니다.</p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="services.html" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-full font-bold text-center transition-all shadow-xl shadow-blue-900/20">진료 과목 보기</a>
-                        <a href="contact.html" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-full font-bold text-center transition-all">찾아오시는 길</a>
+                    <div class="inline-block bg-blue-600/20 backdrop-blur-sm border border-blue-400/30 px-4 py-1.5 rounded-full text-blue-300 font-bold text-sm mb-6 tracking-wider">
+                        TRUSTED HEALTHCARE PARTNER
                     </div>
+                    <h1 class="text-5xl md:text-8xl font-black leading-[1.05] mb-8">당신의 건강이<br><span class="text-blue-400">우리의 진심</span>입니다</h1>
+                    <p class="text-lg md:text-2xl text-slate-300 mb-12 max-w-2xl font-medium leading-relaxed">구리 센트럴병원은 풍부한 경험의 전문의와 첨단 장비로<br>지역 주민의 건강하고 행복한 내일을 약속합니다.</p>
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <a href="services.html" class="bg-blue-600 hover:bg-blue-700 text-white px-12 py-5 rounded-full font-bold text-lg text-center transition-all shadow-2xl shadow-blue-600/30">전문 진료센터 안내</a>
+                        <a href="contact.html" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-12 py-5 rounded-full font-bold text-lg text-center transition-all">실시간 오시는길</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Stats -->
+            <div class="absolute bottom-0 left-0 w-full bg-white/5 backdrop-blur-md border-t border-white/10 hidden md:block">
+                <div class="container mx-auto px-8 py-8 grid grid-cols-4 gap-8">
+                    <div class="text-center text-white"><p class="text-slate-400 text-sm font-bold mb-1 uppercase tracking-tighter">Doctors</p><p class="text-3xl font-black">15+</p></div>
+                    <div class="text-center text-white"><p class="text-slate-400 text-sm font-bold mb-1 uppercase tracking-tighter">Facilities</p><p class="text-3xl font-black">300+</p></div>
+                    <div class="text-center text-white"><p class="text-slate-400 text-sm font-bold mb-1 uppercase tracking-tighter">Experience</p><p class="text-3xl font-black">15Yrs</p></div>
+                    <div class="text-center text-white"><p class="text-slate-400 text-sm font-bold mb-1 uppercase tracking-tighter">Satisfaction</p><p class="text-3xl font-black">99%</p></div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 bg-slate-50">
+        <!-- Main Info -->
+        <section class="py-32 bg-slate-50">
             <div class="container mx-auto px-4 md:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div class="bg-white p-10 rounded-[40px] shadow-sm">
-                        <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="award" class="w-8 h-8"></i></div>
-                        <h3 class="text-xl font-bold mb-4">풍부한 진료 경험</h3>
-                        <p class="text-slate-500">15년 이상의 노하우로 정확하고 안전한 진료 서비스를 약속합니다.</p>
-                    </div>
-                    <div class="bg-white p-10 rounded-[40px] shadow-sm">
-                        <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
-                        <h3 class="text-xl font-bold mb-4">철저한 위생 관리</h3>
-                        <p class="text-slate-500">대학병원급 멸균 시스템으로 감염 걱정 없는 환경을 유지합니다.</p>
-                    </div>
-                    <div class="bg-white p-10 rounded-[40px] shadow-sm">
-                        <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6"><i data-lucide="heart-pulse" class="w-8 h-8"></i></div>
-                        <h3 class="text-xl font-bold mb-4">환자 중심 케어</h3>
-                        <p class="text-slate-500">환자 한 분 한 분의 편안한 회복을 최우선 가치로 생각합니다.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 bg-white">
-            <div class="container mx-auto px-4 md:px-8">
-                <div class="flex flex-col lg:flex-row items-center gap-16">
-                    <div class="lg:w-1/2">
-                        <img src="images/about_summary.jpg" alt="병원 전경 요약" class="rounded-[3rem] shadow-2xl">
+                <div class="flex flex-col lg:flex-row items-center gap-20">
+                    <div class="lg:w-1/2 relative">
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+                        <img src="about_summary.jpg" alt="병원 전경" class="rounded-[3.5rem] shadow-2xl relative z-10" onerror="this.src='https://images.unsplash.com/photo-1586773860418-d319a221f52c?auto=format&fit=crop&q=80&w=1200'">
                     </div>
                     <div class="lg:w-1/2">
-                        <h2 class="text-blue-600 font-bold uppercase tracking-widest mb-4 text-sm">Welcome to Guri Central</h2>
-                        <h3 class="text-4xl font-bold text-slate-900 mb-6">지역 주민이 신뢰하는<br>구리 대표 의료기관</h3>
-                        <p class="text-slate-600 text-lg leading-relaxed mb-8">단순한 질병 치료를 넘어, 환자 한 분 한 분의 평온한 일상 회복을 위해 전 의료진이 마음을 모으고 있습니다.</p>
-                        <a href="about.html" class="inline-flex items-center text-blue-600 font-bold text-lg hover:underline underline-offset-8">병원소개 더보기 <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i></a>
+                        <span class="text-blue-600 font-black tracking-widest text-sm uppercase mb-4 block">Central Core Value</span>
+                        <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8 leading-tight">더 나은 치료를 위한<br>끊임없는 혁신</h2>
+                        <p class="text-slate-600 text-xl leading-relaxed mb-10">환자의 아픔을 공감하고, 정직한 진료로 신뢰를 쌓아가는 구리 센트럴병원은 지역사회와 함께 성장하고 있습니다.</p>
+                        <ul class="space-y-6 mb-12">
+                            <li class="flex items-center space-x-4"><div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-6 h-6"></i></div><span class="text-lg font-bold text-slate-700">대학병원급 정밀 진단 장비 보유</span></li>
+                            <li class="flex items-center space-x-4"><div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0"><i data-lucide="check" class="w-6 h-6"></i></div><span class="text-lg font-bold text-slate-700">각 과별 협진을 통한 종합 솔루션</span></li>
+                        </ul>
+                        <a href="about.html" class="inline-flex items-center px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all">병원 소개 자세히 보기 <i data-lucide="arrow-right" class="ml-3"></i></a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-slate-900 text-white py-16">
+    <footer class="bg-slate-900 text-white py-20">
         <div class="container mx-auto px-4 md:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                <div>
-                    <h4 class="text-xl font-bold mb-6">구리 센트럴병원</h4>
-                    <p class="text-slate-400">당신의 건강한 삶을 위한 최고의 파트너가 되겠습니다.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
+                <div class="col-span-1 lg:col-span-1">
+                    <div class="flex items-center space-x-2 mb-8">
+                        <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-5 h-5"></i></div>
+                        <span class="text-2xl font-black">구리 <span class="text-blue-600">센트럴</span></span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed font-medium">환자 중심의 가치를 실현하며 지역 건강을 선도하는 구리 대표 병원입니다.</p>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-6 text-blue-400">진료 안내</h4>
-                    <ul class="text-slate-400 space-y-2">
-                        <li>평일: 09:00 - 18:00</li>
-                        <li>토요일: 09:00 - 13:00</li>
+                    <h4 class="text-blue-400 font-bold text-lg mb-8 tracking-tighter uppercase">Contact Information</h4>
+                    <div class="space-y-4">
+                        <p class="flex items-start space-x-3 text-slate-400 font-medium"><i data-lucide="map-pin" class="w-5 h-5 text-blue-500 mt-1"></i> <span>경기도 구리시 센트럴대로 123</span></p>
+                        <p class="flex items-center space-x-3 text-slate-400 font-medium"><i data-lucide="phone" class="w-5 h-5 text-blue-500"></i> <span>031-123-4567</span></p>
+                        <p class="flex items-center space-x-3 text-slate-400 font-medium"><i data-lucide="mail" class="w-5 h-5 text-blue-500"></i> <span>info@guri-central.com</span></p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-blue-400 font-bold text-lg mb-8 tracking-tighter uppercase">Treatment Hours</h4>
+                    <div class="space-y-4 font-medium text-slate-400">
+                        <div class="flex justify-between"><span>평일</span><span>09:00 - 18:00</span></div>
+                        <div class="flex justify-between"><span>토요일</span><span>09:00 - 13:00</span></div>
+                        <div class="flex justify-between text-red-400 font-bold uppercase text-xs mt-4"><span>※ 일요일 및 공휴일 휴무</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-blue-400 font-bold text-lg mb-8 tracking-tighter uppercase">Quick Links</h4>
+                    <ul class="space-y-3 font-medium text-slate-400">
+                        <li><a href="about.html" class="hover:text-blue-400 transition-colors">병원소개</a></li>
+                        <li><a href="services.html" class="hover:text-blue-400 transition-colors">진료안내</a></li>
+                        <li><a href="doctors.html" class="hover:text-blue-400 transition-colors">의료진</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-400 transition-colors">오시는길</a></li>
                     </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-6 text-blue-400">빠른 메뉴</h4>
-                    <ul class="text-slate-400 space-y-2">
-                        <li><a href="about.html" class="hover:text-blue-300">병원소개</a></li>
-                        <li><a href="services.html" class="hover:text-blue-300">진료안내</a></li>
-                        <li><a href="doctors.html" class="hover:text-blue-300">의료진</a></li>
-                        <li><a href="contact.html" class="hover:text-blue-300">오시는길</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-6 text-blue-400">고객 센터</h4>
-                    <p class="text-2xl font-black">031-123-4567</p>
                 </div>
             </div>
-            <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
-                &copy; 2024 구리 센트럴병원.
+            <div class="border-t border-slate-800 pt-10 flex flex-col md:row justify-between items-center text-slate-500 text-sm font-medium">
+                <p>&copy; 2024 구리 센트럴병원. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -144,6 +159,19 @@
         document.getElementById('mobile-menu-btn').onclick = () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         };
+        // 로고 로딩 확인 스크립트 (이미지가 있으면 폴더 경로 차이 보정)
+        window.addEventListener('load', function() {
+            const logo = document.querySelector('.logo-img');
+            if (logo && logo.complete && logo.naturalHeight !== 0) {
+                // 이미지 로드 성공 시 아무것도 하지 않음 (CSS에서 처리)
+            } else {
+                // 명시적으로 실패 처리
+                if(logo) {
+                    logo.style.display = 'none';
+                    if(logo.nextElementSibling) logo.nextElementSibling.style.display = 'flex';
+                }
+            }
+        });
     </script>
 </body>
 </html>

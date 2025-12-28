@@ -11,19 +11,24 @@
     <style>
         body { font-family: "Pretendard", sans-serif; }
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .logo-img:not([src]), .logo-img[src=""] { display: none; }
-        .logo-fallback { display: none; }
+        .logo-img { display: block; max-height: 2.5rem; width: auto; }
+        .logo-img[src=""], .logo-img:not([src]) { display: none; }
     </style>
 </head>
 <body class="bg-white text-slate-900">
     <header class="fixed w-full z-50 glass-nav border-b border-slate-100 h-20">
         <div class="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
-            <a href="index.html" class="flex items-center">
+            <a href="index.html" class="flex items-center group">
                 <div class="flex items-center">
-                    <img src="images/logo.png" alt="구리 센트럴병원" class="h-10 md:h-12 w-auto logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="logo-fallback items-center space-x-2">
-                        <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-5 h-5"></i></div>
-                        <span class="text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">구리 <span class="text-blue-600">센트럴병원</span></span>
+                    <img src="logo.png" alt="구리 센트럴병원" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback hidden items-center space-x-2">
+                        <div class="bg-blue-600 p-2 rounded-xl group-hover:bg-blue-700 transition-colors">
+                            <i data-lucide="plus" class="text-white w-5 h-5"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-black text-slate-900 leading-none">구리 <span class="text-blue-600">센트럴병원</span></span>
+                            <span class="text-[8px] text-slate-400 font-bold tracking-[0.2em] uppercase">Guri Central Hospital</span>
+                        </div>
                     </div>
                 </div>
             </a>
@@ -39,14 +44,18 @@
 
     <main class="pt-32 pb-24">
         <div class="container mx-auto px-4 md:px-8 text-center">
-            <h1 class="text-4xl font-bold mb-12">우수한 의료진</h1>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="group">
-                    <div class="rounded-3xl overflow-hidden mb-6 aspect-[3/4] shadow-md">
-                        <img src="images/doctor_kim.jpg" alt="김센트럴 원장" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <h1 class="text-5xl font-black mb-20 tracking-tighter">분야별 최고의 전문 의료진</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16 max-w-6xl mx-auto">
+                <div class="group text-left">
+                    <div class="rounded-[3rem] overflow-hidden mb-8 aspect-[4/5] shadow-2xl relative">
+                        <img src="doctor_kim.jpg" alt="김센트럴 원장" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=600'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
                     </div>
-                    <h3 class="text-xl font-bold">김센트럴 원장</h3>
-                    <p class="text-blue-600 font-medium">내과 전문의</p>
+                    <div class="px-4">
+                        <p class="text-blue-600 font-black text-sm uppercase mb-2 tracking-widest">Chief Executive Officer</p>
+                        <h3 class="text-3xl font-black mb-3">김센트럴 대표원장</h3>
+                        <p class="text-slate-500 text-lg font-medium">내과 / 심장혈관 질환 전문의<br>서울대학교 의과대학 졸업</p>
+                    </div>
                 </div>
             </div>
         </div>

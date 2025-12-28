@@ -11,19 +11,24 @@
     <style>
         body { font-family: "Pretendard", sans-serif; }
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .logo-img:not([src]), .logo-img[src=""] { display: none; }
-        .logo-fallback { display: none; }
+        .logo-img { display: block; max-height: 2.5rem; width: auto; }
+        .logo-img[src=""], .logo-img:not([src]) { display: none; }
     </style>
 </head>
 <body class="bg-white text-slate-900">
     <header class="fixed w-full z-50 glass-nav border-b border-slate-100 h-20">
         <div class="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
-            <a href="index.html" class="flex items-center">
+            <a href="index.html" class="flex items-center group">
                 <div class="flex items-center">
-                    <img src="images/logo.png" alt="구리 센트럴병원" class="h-10 md:h-12 w-auto logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="logo-fallback items-center space-x-2">
-                        <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-5 h-5"></i></div>
-                        <span class="text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">구리 <span class="text-blue-600">센트럴병원</span></span>
+                    <img src="logo.png" alt="구리 센트럴병원" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback hidden items-center space-x-2">
+                        <div class="bg-blue-600 p-2 rounded-xl group-hover:bg-blue-700 transition-colors">
+                            <i data-lucide="plus" class="text-white w-5 h-5"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-black text-slate-900 leading-none">구리 <span class="text-blue-600">센트럴병원</span></span>
+                            <span class="text-[8px] text-slate-400 font-bold tracking-[0.2em] uppercase">Guri Central Hospital</span>
+                        </div>
                     </div>
                 </div>
             </a>
@@ -39,17 +44,30 @@
 
     <main class="pt-32 pb-24">
         <div class="container mx-auto px-4 md:px-8">
-            <h1 class="text-4xl font-bold mb-12 text-center">오시는 길 & 진료 시간</h1>
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <div class="bg-slate-900 text-white p-12 rounded-[50px] shadow-2xl h-full flex flex-col justify-center">
-                        <div class="space-y-12">
-                            <div class="flex items-start space-x-6">
-                                <div class="bg-blue-600 p-4 rounded-2xl"><i data-lucide="map-pin" class="text-white w-6 h-6"></i></div>
-                                <div><p class="text-slate-400 text-sm font-bold uppercase mb-1">Address</p><p class="text-xl font-medium">경기도 구리시 센트럴대로 123</p></div>
+            <h1 class="text-5xl font-black mb-16 text-center tracking-tighter">진료 시간 및 위치 안내</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
+                <div class="bg-slate-900 text-white p-12 md:p-16 rounded-[4rem] shadow-2xl flex flex-col justify-center">
+                    <div class="space-y-12">
+                        <div class="flex items-start space-x-8">
+                            <div class="bg-blue-600 p-4 rounded-2xl"><i data-lucide="map-pin" class="text-white w-8 h-8"></i></div>
+                            <div>
+                                <p class="text-slate-400 text-sm font-bold uppercase mb-2 tracking-widest">Our Location</p>
+                                <p class="text-2xl font-bold">경기도 구리시 센트럴대로 123</p>
+                                <p class="text-slate-500 font-medium">구리역 2번 출구에서 도보 5분 거리</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-8">
+                            <div class="bg-blue-600 p-4 rounded-2xl"><i data-lucide="phone" class="text-white w-8 h-8"></i></div>
+                            <div>
+                                <p class="text-slate-400 text-sm font-bold uppercase mb-2 tracking-widest">Quick Call</p>
+                                <p class="text-4xl font-black text-blue-400 leading-none">031-123-4567</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="h-full min-h-[500px] bg-slate-100 rounded-[4rem] overflow-hidden shadow-inner border border-slate-200">
+                    <!-- 지도 이미지 폴백 처리 -->
+                    <img src="map_bg.jpg" alt="병원 지도" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=1200'">
                 </div>
             </div>
         </div>
