@@ -13,45 +13,63 @@
         body {
             font-family: 'Pretendard', sans-serif;
             scroll-behavior: smooth;
+            margin: 0;
         }
         #root:empty {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             background: #f8fafc;
         }
         #root:empty::after {
-            content: "페이지를 불러오는 중입니다...";
+            content: "의료 서비스를 준비 중입니다...";
+            margin-top: 1rem;
             color: #64748b;
             font-weight: 500;
         }
+        /* 로딩 애니메이션 */
+        #root:empty::before {
+            content: "";
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 
-    <!-- Polyfill for Import Maps -->
-    <script async src="https://ga.jspm.io/npm:es-module-shims@1.10.1/dist/es-module-shims.js"></script>
-
+    <!-- React 및 라이브러리 설정 -->
     <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@19.0.0",
     "react-dom": "https://esm.sh/react-dom@19.0.0",
     "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "lucide-react": "https://esm.sh/lucide-react@0.460.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.460.0?bundle",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
 
-    <!-- Babel for in-browser JSX/TSX transformation -->
+    <!-- Babel Standalone (브라우저에서 직접 TSX 변환) -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
     <div id="root"></div>
 
-    <!-- Entry point script -->
-    <script type="text/babel" data-type="module" data-presets="typescript,react">
+    <!-- 
+      data-type="module"을 사용하면 Babel이 import 문을 처리하려고 시도합니다.
+      별도의 빌드 도구 없이 작동하게 하기 위해 진입점을 아래와 같이 설정합니다.
+    -->
+    <script type="text/babel" data-presets="typescript,react" data-type="module">
         import './index.tsx';
     </script>
 </body>
