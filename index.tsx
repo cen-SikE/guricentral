@@ -1,23 +1,2 @@
 
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
-
-// 브라우저에서 직접 실행될 때를 대비해 root 요소를 찾는 로직을 견고하게 합니다.
-const mountNode = () => {
-  const rootElement = document.getElementById('root');
-  if (!rootElement) return;
-
-  const root = createRoot(rootElement);
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
-};
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', mountNode);
-} else {
-  mountNode();
-}
+// 이 파일은 더 이상 사용되지 않습니다. 모든 기능은 index.html에 통합되었습니다.
