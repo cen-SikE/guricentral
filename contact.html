@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오시는길 - 구리 센트럴병원</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>body { font-family: "Pretendard", sans-serif; }</style>
+</head>
+<body class="bg-white text-slate-900">
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b h-20">
+        <div class="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-6 h-6"></i></div>
+                <span class="text-2xl font-bold text-blue-900">구리 <span class="text-blue-600">센트럴병원</span></span>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-8 font-medium">
+                <a href="index.html" class="text-slate-600 hover:text-blue-600">홈</a>
+                <a href="about.html" class="text-slate-600 hover:text-blue-600">병원소개</a>
+                <a href="services.html" class="text-slate-600 hover:text-blue-600">진료안내</a>
+                <a href="doctors.html" class="text-slate-600 hover:text-blue-600">의료진</a>
+                <a href="contact.html" class="text-blue-600 font-bold underline decoration-4 underline-offset-8">오시는길</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto px-4 md:px-8">
+            <h1 class="text-4xl font-bold mb-12 text-center font-display">오시는 길 & 진료 시간</h1>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-slate-900 text-white p-12 rounded-[50px] shadow-2xl">
+                        <div class="space-y-12">
+                            <div class="flex items-start space-x-6">
+                                <div class="bg-blue-600 p-4 rounded-2xl"><i data-lucide="map-pin" class="text-white w-6 h-6"></i></div>
+                                <div><p class="text-slate-400 text-sm font-bold uppercase mb-1">Address</p><p class="text-xl font-medium">경기도 구리시 센트럴대로 123</p></div>
+                            </div>
+                            <div class="flex items-start space-x-6">
+                                <div class="bg-blue-600 p-4 rounded-2xl"><i data-lucide="phone" class="text-white w-6 h-6"></i></div>
+                                <div><p class="text-slate-400 text-sm font-bold uppercase mb-1">Call Us</p><p class="text-3xl font-black">031-123-4567</p></div>
+                            </div>
+                            <div class="flex items-start space-x-6">
+                                <div class="bg-blue-600 p-4 rounded-2xl"><i data-lucide="clock" class="text-white w-6 h-6"></i></div>
+                                <div><p class="text-slate-400 text-sm font-bold uppercase mb-1">Hours</p><p class="text-lg">평일: 09:00 - 18:00<br>토요일: 09:00 - 13:00</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="w-full h-[500px] bg-slate-100 rounded-[50px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
