@@ -8,13 +8,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>body { font-family: "Pretendard", sans-serif; }</style>
+    <style>
+        body { font-family: "Pretendard", sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .logo-img:not([src]), .logo-img[src=""] { display: none; }
+        .logo-fallback { display: none; }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
-    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b h-20">
+    <header class="fixed w-full z-50 glass-nav border-b border-slate-100 h-20">
         <div class="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
             <a href="index.html" class="flex items-center">
-                <img src="images/logo.png" alt="구리 센트럴병원 로고" class="h-10 md:h-12 w-auto">
+                <div class="flex items-center">
+                    <img src="images/logo.png" alt="구리 센트럴병원" class="h-10 md:h-12 w-auto logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback items-center space-x-2">
+                        <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-5 h-5"></i></div>
+                        <span class="text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">구리 <span class="text-blue-600">센트럴병원</span></span>
+                    </div>
+                </div>
             </a>
             <nav class="hidden lg:flex items-center space-x-8 font-medium">
                 <a href="index.html" class="text-slate-600 hover:text-blue-600 transition-colors">홈</a>
@@ -32,7 +43,6 @@
                 <h1 class="text-5xl font-black mb-6">진료 센터 상세 안내</h1>
                 <p class="text-slate-500 text-xl">각 분야 전문의가 최상의 의료 서비스를 제공합니다.</p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="bg-white p-12 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all">
                     <div class="flex items-center mb-8">
@@ -54,28 +64,6 @@
                         <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 고혈압, 당뇨 등 만성질환</li>
                         <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 심혈관 정밀 검진</li>
                         <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 위/대장 내시경</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-12 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all">
-                    <div class="flex items-center mb-8">
-                        <div class="bg-blue-100 p-4 rounded-2xl mr-6"><i data-lucide="baby" class="text-blue-600 w-10 h-10"></i></div>
-                        <h3 class="text-3xl font-bold">소아청소년과</h3>
-                    </div>
-                    <ul class="space-y-4 text-slate-600 text-lg">
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 영유아 검진 및 발달 상담</li>
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 소아 호흡기 및 알레르기</li>
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 국가 예방 접종</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-12 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all">
-                    <div class="flex items-center mb-8">
-                        <div class="bg-blue-100 p-4 rounded-2xl mr-6"><i data-lucide="stethoscope" class="text-blue-600 w-10 h-10"></i></div>
-                        <h3 class="text-3xl font-bold">종합검진센터</h3>
-                    </div>
-                    <ul class="space-y-4 text-slate-600 text-lg">
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 연령별/질환별 맞춤 검진</li>
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 원데이(One-Day) 검진</li>
-                        <li class="flex items-center"><i data-lucide="check" class="mr-2 text-blue-500"></i> 정밀 CT / MRI 촬영</li>
                     </ul>
                 </div>
             </div>

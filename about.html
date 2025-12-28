@@ -8,13 +8,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <style>body { font-family: "Pretendard", sans-serif; }</style>
+    <style>
+        body { font-family: "Pretendard", sans-serif; }
+        .logo-img:not([src]), .logo-img[src=""] { display: none; }
+        .logo-fallback { display: none; }
+        .logo-img:not([src]) + .logo-fallback, .logo-img[src=""] + .logo-fallback { display: flex; }
+    </style>
 </head>
 <body class="bg-white text-slate-900">
     <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b h-20">
         <div class="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
             <a href="index.html" class="flex items-center">
-                <img src="images/logo.png" alt="구리 센트럴병원 로고" class="h-10 md:h-12 w-auto">
+                <div class="relative flex items-center">
+                    <img src="images/logo.png" alt="구리 센트럴병원" class="h-10 md:h-12 w-auto logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback hidden items-center space-x-2">
+                        <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-5 h-5"></i></div>
+                        <span class="text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">구리 <span class="text-blue-600">센트럴병원</span></span>
+                    </div>
+                </div>
             </a>
             <nav class="hidden lg:flex items-center space-x-8 font-medium">
                 <a href="index.html" class="text-slate-600 hover:text-blue-600 transition-colors">홈</a>

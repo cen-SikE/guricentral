@@ -11,15 +11,21 @@
     <style>
         body { font-family: "Pretendard", sans-serif; scroll-behavior: smooth; }
         .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .logo-img:not([src]), .logo-img[src=""] { display: none; }
+        .logo-fallback { display: none; }
     </style>
 </head>
 <body class="bg-white text-slate-900">
-    <!-- Header -->
     <header class="fixed w-full z-50 glass-nav border-b border-slate-100 h-20">
         <div class="container mx-auto px-4 md:px-8 flex items-center justify-between h-full">
             <a href="index.html" class="flex items-center">
-                <!-- 로고 이미지로 교체 -->
-                <img src="images/logo.png" alt="구리 센트럴병원 로고" class="h-10 md:h-12 w-auto">
+                <div class="flex items-center">
+                    <img src="images/logo.png" alt="구리 센트럴병원" class="h-10 md:h-12 w-auto logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-fallback items-center space-x-2">
+                        <div class="bg-blue-600 p-2 rounded-lg"><i data-lucide="plus" class="text-white w-5 h-5"></i></div>
+                        <span class="text-xl md:text-2xl font-bold text-blue-900 whitespace-nowrap">구리 <span class="text-blue-600">센트럴병원</span></span>
+                    </div>
+                </div>
             </a>
             <nav class="hidden lg:flex items-center space-x-8 font-medium">
                 <a href="index.html" class="text-blue-600 font-bold">홈</a>
@@ -27,7 +33,7 @@
                 <a href="services.html" class="text-slate-600 hover:text-blue-600 transition-colors">진료안내</a>
                 <a href="doctors.html" class="text-slate-600 hover:text-blue-600 transition-colors">의료진</a>
                 <a href="contact.html" class="text-slate-600 hover:text-blue-600 transition-colors">오시는길</a>
-                <button class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200">진료 예약</button>
+                <button class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 ml-4">진료 예약</button>
             </nav>
             <button class="lg:hidden p-2 text-slate-600" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
         </div>
@@ -43,7 +49,6 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="relative h-screen flex items-center overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <img src="images/main_hero.jpg" alt="메인 히어로 배경" class="w-full h-full object-cover brightness-[0.45]">
@@ -61,7 +66,6 @@
             </div>
         </section>
 
-        <!-- Highlights (Summary) -->
         <section class="py-24 bg-slate-50">
             <div class="container mx-auto px-4 md:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
@@ -84,7 +88,6 @@
             </div>
         </section>
 
-        <!-- About Section (Summary) -->
         <section class="py-24 bg-white">
             <div class="container mx-auto px-4 md:px-8">
                 <div class="flex flex-col lg:flex-row items-center gap-16">
@@ -100,39 +103,8 @@
                 </div>
             </div>
         </section>
-
-        <!-- Services Section (Summary) -->
-        <section class="py-24 bg-slate-50">
-            <div class="container mx-auto px-4 md:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-blue-600 font-bold uppercase mb-4">Professional Services</h2>
-                    <h3 class="text-4xl font-bold">차별화된 전문 진료</h3>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-10 rounded-[40px] shadow-sm hover:-translate-y-2 transition-transform">
-                        <i data-lucide="smile" class="text-blue-600 w-10 h-10 mb-6"></i>
-                        <h4 class="text-2xl font-bold mb-4">치과 센터</h4>
-                        <p class="text-slate-500 mb-6">임플란트, 교정, 보철 치료 등 숙련된 전문의의 정밀 진료</p>
-                        <a href="services.html" class="text-blue-600 font-bold">자세히 보기</a>
-                    </div>
-                    <div class="bg-white p-10 rounded-[40px] shadow-sm hover:-translate-y-2 transition-transform">
-                        <i data-lucide="baby" class="text-blue-600 w-10 h-10 mb-6"></i>
-                        <h4 class="text-2xl font-bold mb-4">소아청소년과</h4>
-                        <p class="text-slate-500 mb-6">우리 아이들의 건강한 성장을 위한 맞춤 케어 시스템</p>
-                        <a href="services.html" class="text-blue-600 font-bold">자세히 보기</a>
-                    </div>
-                    <div class="bg-white p-10 rounded-[40px] shadow-sm hover:-translate-y-2 transition-transform">
-                        <i data-lucide="heart" class="text-blue-600 w-10 h-10 mb-6"></i>
-                        <h4 class="text-2xl font-bold mb-4">내과 센터</h4>
-                        <p class="text-slate-500 mb-6">만성질환부터 심장 특화 진료까지 종합 솔루션 제공</p>
-                        <a href="services.html" class="text-blue-600 font-bold">자세히 보기</a>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-slate-900 text-white py-16">
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -145,16 +117,15 @@
                     <ul class="text-slate-400 space-y-2">
                         <li>평일: 09:00 - 18:00</li>
                         <li>토요일: 09:00 - 13:00</li>
-                        <li>일요일/공휴일 휴무</li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-bold mb-6 text-blue-400">빠른 메뉴</h4>
                     <ul class="text-slate-400 space-y-2">
-                        <li><a href="about.html" class="hover:text-blue-300 transition-colors">병원소개</a></li>
-                        <li><a href="services.html" class="hover:text-blue-300 transition-colors">진료안내</a></li>
-                        <li><a href="doctors.html" class="hover:text-blue-300 transition-colors">의료진</a></li>
-                        <li><a href="contact.html" class="hover:text-blue-300 transition-colors">오시는길</a></li>
+                        <li><a href="about.html" class="hover:text-blue-300">병원소개</a></li>
+                        <li><a href="services.html" class="hover:text-blue-300">진료안내</a></li>
+                        <li><a href="doctors.html" class="hover:text-blue-300">의료진</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-300">오시는길</a></li>
                     </ul>
                 </div>
                 <div>
@@ -163,7 +134,7 @@
                 </div>
             </div>
             <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
-                &copy; 2024 구리 센트럴병원. All Rights Reserved.
+                &copy; 2024 구리 센트럴병원.
             </div>
         </div>
     </footer>
